@@ -28,6 +28,7 @@ make
 make install
 cd ..
 rm -rf ruby-1.9.2-p290
+rm ruby-1.9.2-p290.tar.gz
 
 # Install RubyGems 1.7.2
 wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.11.tgz
@@ -36,6 +37,7 @@ cd rubygems-1.8.11
 /opt/ruby/bin/ruby setup.rb
 cd ..
 rm -rf rubygems-1.8.11
+rm rubygems-1.8.11.tgz
 
 # Installing chef & Puppet
 /opt/ruby/bin/gem install chef --no-ri --no-rdoc
@@ -44,6 +46,11 @@ rm -rf rubygems-1.8.11
 # Add /opt/ruby/bin to the global path as the last resort so
 # Ruby, RubyGems, and Chef/Puppet are visible
 echo 'PATH=$PATH:/opt/ruby/bin/'> /etc/profile.d/vagrantruby.sh
+
+# Install basic development tools
+apt-get -y install ack
+apt-get -y install git
+apt-get -y install vim
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh
